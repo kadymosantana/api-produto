@@ -27,7 +27,7 @@ pipeline {
         stage ("Deploy Kubernetes") {
             steps {
                 // Setting credentials with the Kubernetes CLI plugin and deploying the manifest file
-                withKubeConfig([credentialId: "kubeconfig"]) {
+                withKubeConfig([credentialsId: "kubeconfig"]) {
                     sh "kubectl apply -f ./k8s/deployment.yaml"
                 }
             }
