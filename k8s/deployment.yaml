@@ -29,6 +29,7 @@ metadata:
 spec:
   securityContext:
     runAsUser: 1000
+    runAsGroup: 1000
   selector:
     app: mongodb
   ports:
@@ -43,6 +44,7 @@ metadata:
 spec:
   securityContext:
     runAsUser: 1000
+    runAsGroup: 1000
   replicas: 1
   selector:
     matchLabels:
@@ -56,6 +58,9 @@ spec:
       labels:
         app: api
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
       containers:
         - name: api
           image: fabricioveronez/api-produto:{{tag}}
@@ -72,6 +77,7 @@ metadata:
 spec:
   securityContext:
     runAsUser: 1000
+    runAsGroup: 1000
   selector:
     app: api
   ports:
