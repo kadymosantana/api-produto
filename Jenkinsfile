@@ -25,10 +25,10 @@ pipeline {
         }
 
         stage ("Deploy Kubernetes") {
+            environment {
+                tag_version = "${env.BUILD_ID}"
+            }
             steps {
-                environment {
-                    tag_version = "${env.BUILD_ID}"
-                }
                 // Setting credentials with the Kubernetes CLI plugin and deploying the manifest file
                 withKubeConfig([credentialsId: "kubeconfig"]) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
