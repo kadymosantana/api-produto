@@ -27,6 +27,8 @@ kind: Service
 metadata:
   name: mongodb-service
 spec:
+  securityContext:
+    runAsUser: 1000
   selector:
     app: mongodb
   ports:
@@ -39,6 +41,8 @@ kind: Deployment
 metadata:
   name: api
 spec:
+  securityContext:
+    runAsUser: 1000
   replicas: 1
   selector:
     matchLabels:
@@ -66,6 +70,8 @@ kind: Service
 metadata:
   name: api-service
 spec:
+  securityContext:
+    runAsUser: 1000
   selector:
     app: api
   ports:
