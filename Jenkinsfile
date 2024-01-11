@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Registring the built image with its tags on Dockerhub
-                    docker.withRegistry("", "kadymo-dockerhub-id") {
+                    docker.withRegistry("", "kadymo-dockerhub") {
                         dockerapp.push("latest")
                         dockerapp.push("${env.BUILD_ID}")
                     }
